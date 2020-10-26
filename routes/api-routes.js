@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Workout = require('../models/workout.js');
 
-router.post('/api/workout', (req, res) => {
+router.post('/api/workouts', (req, res) => {
   Workout.create({})
     .then((dbWorkout) => {
       res.json(dbWorkout);
@@ -11,7 +11,7 @@ router.post('/api/workout', (req, res) => {
     });
 });
 
-router.get('/api/workout/range', ({body}, res) => {
+router.get('/api/workouts/range', ({body}, res) => {
   Workout.find({})
     .limit(7)
     .then((dbWorkout) => {
@@ -37,8 +37,7 @@ router.put('/api/workouts/:id', ({body, params}, res) => {
       res.status(400).json(err);
     });
 });
-
-router.get('/api/workout', (req, res) => {
+router.get('/api/workouts', (req, res) => {
   Workout.find({})
     .sort({date: -1})
     .then((dbWorkout) => {
@@ -48,5 +47,22 @@ router.get('/api/workout', (req, res) => {
       res.status(400).json(err);
     });
 });
+app.delete("/api/workouts/:id", ({params}, res) => {
+    // We just have to specify which todo we want to destroy with "where"
+    Workout.findByIdAndUpdate(
+        params.id,
+        // {$push: {exercises: body}},
+        // {
+        //   new: true,
+        //   runValidators: true,
+        // }
+      )
+        .then((dbWorkout) => {
+          res.json(dbWorkout);
+        })
+        .catch((err) => {
+          res.status(400).json(err);
+        });
+  });
 
 module.exports = router;
