@@ -47,22 +47,15 @@ router.get('/api/workouts', (req, res) => {
       res.status(400).json(err);
     });
 });
-app.delete("/api/workouts/:id", ({params}, res) => {
-    // We just have to specify which todo we want to destroy with "where"
-    Workout.findByIdAndUpdate(
-        params.id,
-        // {$push: {exercises: body}},
-        // {
-        //   new: true,
-        //   runValidators: true,
-        // }
-      )
-        .then((dbWorkout) => {
-          res.json(dbWorkout);
-        })
-        .catch((err) => {
-          res.status(400).json(err);
-        });
-  });
+app.delete('/api/workouts/:id', ({params}, res) => {
+  // We just have to specify which todo we want to destroy with "where"
+  Workout.remove(params.id, {})
+    .then((dbWorkout) => {
+      res.json(dbWorkout);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+});
 
 module.exports = router;
