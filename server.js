@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const logger = require('morgan');
-const Workout = require('./models/workout');
 
 const PORT = process.env.PORT || 3000;
 
@@ -14,9 +13,9 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Password
-const MONGODB_URI = 'mongodb+srv://Password:Password@cluster0.lfztv.mongodb.net/<dbname>?retryWrites=true&w=majority';
+const MONGODB_URI = 'mongodb+srv://Password:Password@cluster0.lfztv.mongodb.net/workout?retryWrites=true&w=majority';
 
-mongoose.connect(MONGODB_URI || 'mongodb://localhost/workout', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
   useNewUrlParser: true,
   useFindAndModify: false,
 });
