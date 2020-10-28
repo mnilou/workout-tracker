@@ -12,7 +12,10 @@
 
 ## Screenshots
 
-<!-- <img src= "public\assets\images\screenshot.jpg" alt = "Screenshot of Burger App"> -->
+<img src= "public\img\screenshot-1.jpg" alt = "Screenshot of Workout App Homepage">
+<img src= "public\img\screenshot-2.jpg" alt = "Screenshot of Workout App Dashboard">
+<img src= "public\img\screenshot-3.jpg" alt = "Screenshot of Workout App Workout Page">
+<img src= "public\img\screenshot-4.jpg" alt = "Screenshot of Workout App Workout Page">
 
 ## Table of contents
 
@@ -34,10 +37,19 @@
 
 ## Usage
 
-<!-- > Click on the app link to view the homepage. User can search for song by track title. User can click the "listen" button to hear the song and see the lyrics. User can click the "save" button to save song to history. -->
+> When the user loads the page, they should be given the option to create a new workout or continue with their last workout.
+The user should be able to:
+
+    * Add exercises to a previous workout plan.
+
+    * Add new exercises to a new workout plan.
+
+    * View the combined weight of multiple exercises on the stats page.
+
+> User needs mongoose and express to run app.    
 
 ## Link
-<!-- >[Workout Tracker](https://covidkaraoke.herokuapp.com/) -->
+https://workout-tracker-mnilou.herokuapp.com/ 
 
 ## Contributors
 
@@ -46,9 +58,9 @@
 ## Technology
 
 - Javascript
+- HTML
+- CSS
 - Node.js
-- Mongoose API
-- Express API
-- Express-Handlebars
-
-
+- Mongoose 
+- Express 
+- Morgan
