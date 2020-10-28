@@ -13,7 +13,7 @@ router.post('/api/workouts', (req, res) => {
     });
 });
 // Gets up to 7 previous workouts and sorting by descending order
-router.get('/api/workouts/range', ({body}, res) => {
+router.get('/api/workouts/range', (req, res) => {
   Workout.find({})
     .sort({_id: -1})
     .limit(7)
@@ -53,11 +53,11 @@ router.get('/api/workouts', (req, res) => {
     });
 });
 // delete a workout by id
-router.remove('/api/workouts/:id', ({params}, res) => {
+router.delete('/api/workouts/:id', ({body, params}, res) => {
   // We just have to specify which todo we want to destroy with "where"
-  Workout.delete(params.id, {})
-    .then((dbWorkout) => {
-      res.json(dbWorkout);
+  Workout.delete(body.id)
+    .then(() => {
+      res.json(true);
     })
     .catch((err) => {
       res.status(400).json(err);
